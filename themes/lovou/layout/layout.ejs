@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<%- partial('partial/head') %>
+<body>
+  <%- partial('partial/header') %>
+  <main class="main container">
+    <%- body %>
+  </main>
+  <%- partial('partial/footer') %>
+  <button id="back-to-top" class="back-to-top" aria-label="<%= __('post.top') %>" title="<%= __('post.top') %>">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+  <script src="<%- url_for('js/main.js') %>"></script>
+</body>
+</html>

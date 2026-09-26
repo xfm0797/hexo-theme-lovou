@@ -1,0 +1,20 @@
+<% if (post.prev || post.next) { %>
+<nav class="post-nav">
+  <% if (post.prev) { %>
+    <a class="post-nav-item" href="<%- url_for(post.prev.path) %>">
+      <span class="post-nav-label">← <%= __('post.prev') %></span>
+      <span class="post-nav-title"><%= post.prev.title %></span>
+    </a>
+  <% } else { %>
+    <span class="post-nav-item placeholder"></span>
+  <% } %>
+  <% if (post.next) { %>
+    <a class="post-nav-item next" href="<%- url_for(post.next.path) %>">
+      <span class="post-nav-label"><%= __('post.next') %> →</span>
+      <span class="post-nav-title"><%= post.next.title %></span>
+    </a>
+  <% } else { %>
+    <span class="post-nav-item placeholder"></span>
+  <% } %>
+</nav>
+<% } %>

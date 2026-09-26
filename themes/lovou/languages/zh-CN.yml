@@ -1,0 +1,15 @@
+post:
+  prev: 上一篇
+  next: 下一篇
+  toc: 目录
+  top: 返回顶部
+  words: 字
+  minutes: 分钟阅读
+  uncategorized: 未分类
+page:
+  categories: 分类
+  tags: 标签
+  empty: 这里还没有内容
+pagination:
+  prev: 上一页
+  next: 下一页

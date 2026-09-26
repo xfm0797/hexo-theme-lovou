@@ -1,0 +1,19 @@
+<% if (page.total > 1) { %>
+<nav class="pagination" aria-label="分页">
+  <span class="page-item">
+    <% if (page.prev > 0) { %>
+      <a class="page-link" href="<%- url_for(page.prev === 1 ? config.root : page.prev_link) %>"><%= __('pagination.prev') %> ←</a>
+    <% } else { %>
+      <span class="page-link disabled"><%= __('pagination.prev') %> ←</span>
+    <% } %>
+  </span>
+  <span class="page-info"><%= page.current %> / <%= page.total %></span>
+  <span class="page-item">
+    <% if (page.next > 0) { %>
+      <a class="page-link" href="<%- url_for(page.next_link) %>">→ <%= __('pagination.next') %></a>
+    <% } else { %>
+      <span class="page-link disabled">→ <%= __('pagination.next') %></span>
+    <% } %>
+  </span>
+</nav>
+<% } %>

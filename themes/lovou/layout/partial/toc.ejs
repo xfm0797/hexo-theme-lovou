@@ -1,0 +1,9 @@
+<%
+  const tocHtml = toc(page.content, { class: 'toc-list', list_number: false, max_depth: 3 });
+%>
+<% if (tocHtml && tocHtml.trim() !== '') { %>
+<details class="toc" open>
+  <summary class="toc-title"><%= __('post.toc') %></summary>
+  <div class="toc-body"><%- tocHtml %></div>
+</details>
+<% } %>

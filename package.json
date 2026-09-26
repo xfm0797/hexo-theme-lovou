@@ -1,0 +1,26 @@
+{
+  "name": "lovou-pw-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "基于 Hexo 的极简现代风中文博客",
+  "scripts": {
+    "server": "hexo server",
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "deploy": "hexo deploy",
+    "new": "hexo new"
+  },
+  "hexo": {
+    "version": "6.3.0"
+  },
+  "dependencies": {
+    "hexo": "^6.3.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^3.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^6.3.0",
+    "hexo-server": "^3.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+post:
+  prev: Previous
+  next: Next
+  toc: Contents
+  top: Back to top
+  words: words
+  minutes: min read
+  uncategorized: Uncategorized
+page:
+  categories: Categories
+  tags: Tags
+  empty: Nothing here yet
+pagination:
+  prev: Newer
+  next: Older

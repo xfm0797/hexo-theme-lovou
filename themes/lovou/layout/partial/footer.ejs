@@ -1,0 +1,14 @@
+<footer class="footer">
+  <div class="container">
+    <p class="footer-copyright">
+      © <%= new Date().getFullYear() %> <%= config.author || config.title %>
+      <% if (theme.footer) { %>
+      <span class="footer-extra"><%- theme.footer %></span>
+      <% } %>
+    </p>
+    <p class="footer-powered">
+      由 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> 驱动
+      · <span class="footer-theme"><a href="https://github.com/xfm0797" target="_blank" rel="noopener">lovou</a> 主题</span>
+    </p>
+  </div>
+</footer>

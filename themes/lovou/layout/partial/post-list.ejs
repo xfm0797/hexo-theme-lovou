@@ -1,0 +1,25 @@
+<div class="post-list">
+  <% page.posts.each(function (post) { %>
+    <article class="post-item">
+      <h2 class="post-item-title">
+        <a href="<%- url_for(post.path) %>"><%= post.title %></a>
+      </h2>
+      <div class="post-item-meta">
+        <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+        <% if (post.categories && post.categories.length) { %>
+          <span class="meta-sep">·</span>
+          <% post.categories.each(function (cat, i) { %>
+            <% if (i > 0) { %><span class="meta-sep">/</span><% } %>
+            <a class="post-item-cat" href="<%- url_for(cat.path) %>"><%= cat.name %></a>
+          <% }); %>
+        <% } %>
+      </div>
+      <%
+        const excerpt = post.excerpt || post.content;
+        const isAuto = !post.excerpt;
+      %>
+      <p class="post-item-excerpt"><%= isAuto ? trim_excerpt(excerpt) : trim_excerpt(excerpt, 200) %></p>
+      <a class="post-item-more" href="<%- url_for(post.path) %>">阅读全文 →</a>
+    </article>
+  <% }); %>
+</div>

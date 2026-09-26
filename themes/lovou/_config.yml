@@ -1,0 +1,26 @@
+# lovou 主题配置
+
+# 导航菜单
+menu:
+  - name: 首页
+    link: /
+  - name: 归档
+    link: /archives
+  - name: 分类
+    link: /categories
+  - name: 标签
+    link: /tags
+  - name: 关于
+    link: /about
+
+# 文章页是否显示目录（单篇文章可在 front-matter 中写 toc: false 关闭）
+toc: true
+
+# 是否显示字数与阅读时长
+word_count: true
+
+# 文章底部版权声明（留空则不显示）
+license: '本文采用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="noopener">CC BY 4.0</a> 许可协议发布'
+
+# 页脚附加文字（如备案号，支持 HTML，留空则不显示）
+footer: ''

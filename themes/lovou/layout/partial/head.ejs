@@ -1,0 +1,37 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<%
+  let pageTitle;
+  if (page.title) {
+    pageTitle = page.title + ' · ' + config.title;
+  } else if (is_home()) {
+    pageTitle = config.title + (config.subtitle ? ' · ' + config.subtitle : '');
+  } else {
+    pageTitle = config.title;
+  }
+%>
+<title><%= pageTitle %></title>
+<% if (config.description) { %>
+<meta name="description" content="<%= config.description %>">
+<% } %>
+<% if (config.keywords) { %>
+<meta name="keywords" content="<%= config.keywords %>">
+<% } %>
+<meta name="generator" content="Hexo">
+<link rel="stylesheet" href="<%- url_for('css/style.css') %>">
+<script>
+  // 初始化主题，避免闪烁（FOUC）
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (saved === 'dark' || (!saved && preferDark)) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+</head>
