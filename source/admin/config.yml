@@ -1,0 +1,51 @@
+# Sveltia CMS 配置（兼容 Decap CMS 格式）
+# 文档: https://github.com/sveltia/sveltia-cms#readme
+
+backend:
+  name: github
+  repo: xfm0797/hexo-theme-lovou
+  branch: main
+  # TODO: 部署 OAuth 网关后，把下面的地址改为你的网关地址（末尾不带 /auth）
+  base_url: https://decap-oauth.YOUR-SUBDOMAIN.workers.dev
+
+site_url: https://xfm0797.github.io/hexo-theme-lovou/
+
+# 显示界面语言：简体中文
+locale: zh-Hans
+
+# 媒体（图片）保存位置：源码目录与站点公开路径
+media_folder: source/images
+public_folder: /hexo-theme-lovou/images
+
+# 若启用编辑工作流（先存草稿 PR，再点发布合并），取消下面这行注释即可
+# publish_mode: editorial_workflow
+
+collections:
+  # 文章
+  - name: posts
+    label: 文章
+    folder: source/_posts
+    create: true
+    slug: "{{slug}}"
+    sortable_fields: [date, title]
+    preview_path: "{{year}}/{{month}}/{{day}}/{{slug}}"
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 发布日期, name: date, widget: datetime, format: "YYYY-MM-DD HH:mm:ss", date_format: "YYYY-MM-DD", time_format: "HH:mm:ss" }
+      - { label: 分类, name: categories, widget: list, required: false }
+      - { label: 标签, name: tags, widget: list, required: false }
+      - { label: 摘要, name: excerpt, widget: string, required: false, hint: 留空则自动截取正文开头 }
+      - { label: 显示目录, name: toc, widget: boolean, required: false, default: true }
+      - { label: 正文, name: body, widget: markdown }
+
+  # 页面
+  - name: pages
+    label: 页面
+    files:
+      - label: 关于
+        name: about
+        file: source/about/index.md
+        fields:
+          - { label: 标题, name: title, widget: string }
+          - { label: 日期, name: date, widget: datetime, format: "YYYY-MM-DD HH:mm:ss", date_format: "YYYY-MM-DD", time_format: "HH:mm:ss" }
+          - { label: 正文, name: body, widget: markdown }

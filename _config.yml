@@ -27,7 +27,8 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+# Decap CMS 管理界面按原样复制，不做模板渲染
+skip_render: admin/*
 
 # 文章
 new_post_name: :title.md
