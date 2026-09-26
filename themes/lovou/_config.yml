@@ -30,8 +30,8 @@ footer: ''
 # 文章页默认开启（单篇可在 front-matter 写 comments: false 关闭）
 # 自定义页面需在 front-matter 写 comments: true 开启
 comments:
-  enable: false
-  type: giscus
+  enable: true
+  type: waline
 
   # Giscus — 基于 GitHub Discussions（推荐）https://giscus.app/zh-CN
   giscus:
@@ -45,7 +45,7 @@ comments:
 
   # Waline https://waline.js.org
   waline:
-    server-url:
+    server-url: https://waline.xfm.qzz.io
     lang: zh-CN
 
   # Gitalk — 基于 GitHub Issues
