@@ -1,43 +1,47 @@
-<article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><%= page.title %></h1>
-    <div class="post-meta">
-      <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY-MM-DD') %></time>
-      <% if (theme.word_count) { %>
-        <span class="meta-sep">·</span>
-        <span><%= word_count(page.content) %> <%= __('post.words') %></span>
-        <span class="meta-sep">·</span>
-        <span><%= reading_time(word_count(page.content)) %> <%= __('post.minutes') %></span>
-      <% } %>
-      <% if (page.categories && page.categories.length) { %>
-        <span class="meta-sep">·</span>
-        <% page.categories.each(function (cat) { %>
-          <a class="post-meta-cat" href="<%- url_for(cat.path) %>"><%= cat.name %></a>
-        <% }); %>
-      <% } %>
-    </div>
-  </header>
-
+<div class="post-layout">
   <% if (theme.toc && page.toc !== false) { %>
+  <aside class="toc-aside" aria-label="文章目录">
     <%- partial('partial/toc') %>
+  </aside>
   <% } %>
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><%= page.title %></h1>
+      <div class="post-meta">
+        <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY-MM-DD') %></time>
+        <% if (theme.word_count) { %>
+          <span class="meta-sep">·</span>
+          <span><%= word_count(page.content) %> <%= __('post.words') %></span>
+          <span class="meta-sep">·</span>
+          <span><%= reading_time(word_count(page.content)) %> <%= __('post.minutes') %></span>
+        <% } %>
+        <% if (page.categories && page.categories.length) { %>
+          <span class="meta-sep">·</span>
+          <% page.categories.each(function (cat) { %>
+            <a class="post-meta-cat" href="<%- url_for(cat.path) %>"><%= cat.name %></a>
+          <% }); %>
+        <% } %>
+      </div>
+    </header>
 
-  <div class="post-content">
-    <%- page.content %>
-  </div>
-
-  <footer class="post-footer">
-    <% if (page.tags && page.tags.length) { %>
-    <div class="post-tags">
-      <% page.tags.each(function (tag) { %>
-        <a class="tag" href="<%- url_for(tag.path) %>"># <%= tag.name %></a>
-      <% }); %>
+    <div class="post-content">
+      <%- page.content %>
     </div>
-    <% } %>
-    <% if (theme.license) { %>
-    <div class="post-license"><%- theme.license %></div>
-    <% } %>
-  </footer>
-</article>
+
+    <footer class="post-footer">
+      <% if (page.tags && page.tags.length) { %>
+      <div class="post-tags">
+        <% page.tags.each(function (tag) { %>
+          <a class="tag" href="<%- url_for(tag.path) %>"># <%= tag.name %></a>
+        <% }); %>
+      </div>
+      <% } %>
+      <% if (theme.license) { %>
+      <div class="post-license"><%- theme.license %></div>
+      <% } %>
+    </footer>
+  </article>
+</div>
 
 <%- partial('partial/post-nav', { post: page }) %>
+<%- partial('partial/comments') %>

@@ -24,3 +24,38 @@ license: '本文采用 <a href="https://creativecommons.org/licenses/by/4.0/deed
 
 # 页脚附加文字（如备案号，支持 HTML，留空则不显示）
 footer: ''
+
+# 评论系统：将 enable 改为 true，并填写所选平台（type）的配置后生效
+# 支持：giscus / waline / gitalk / disqus
+# 文章页默认开启（单篇可在 front-matter 写 comments: false 关闭）
+# 自定义页面需在 front-matter 写 comments: true 开启
+comments:
+  enable: false
+  type: giscus
+
+  # Giscus — 基于 GitHub Discussions（推荐）https://giscus.app/zh-CN
+  giscus:
+    repo:
+    repo-id:
+    category: Announcements
+    category-id:
+    mapping: title
+    reactions-enabled: 1
+    lang: zh-CN
+
+  # Waline https://waline.js.org
+  waline:
+    server-url:
+    lang: zh-CN
+
+  # Gitalk — 基于 GitHub Issues
+  gitalk:
+    client-id:
+    client-secret:
+    repo:
+    owner:
+    admin: []
+
+  # Disqus https://disqus.com
+  disqus:
+    shortname:

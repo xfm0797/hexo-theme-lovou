@@ -1,6 +1,6 @@
 {
   "name": "lovou-pw-blog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "基于 Hexo 的极简现代风中文博客",
   "scripts": {

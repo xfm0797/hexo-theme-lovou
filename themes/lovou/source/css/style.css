@@ -832,3 +832,55 @@ figure.highlight figcaption {
     scroll-behavior: auto;
   }
 }
+
+/* ---------- 文章双栏布局（右侧目录） ---------- */
+.container-wide {
+  max-width: 60rem;
+}
+
+.container-wide .post {
+  max-width: 44rem;
+  min-width: 0;
+}
+
+.toc-aside {
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .post-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .toc-aside {
+    display: block;
+    order: 2;
+    position: sticky;
+    top: 4.5rem;
+    width: 13rem;
+    flex-shrink: 0;
+  }
+
+  .toc-aside .toc {
+    margin: 0;
+  }
+
+  .toc-aside .toc-body {
+    max-height: calc(100vh - 12rem);
+  }
+}
+
+/* ---------- 评论区 ---------- */
+.comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.comments-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+}
