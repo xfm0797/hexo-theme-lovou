@@ -5,8 +5,8 @@ backend:
   name: github
   repo: xfm0797/hexo-theme-lovou
   branch: main
-  # TODO: 部署 OAuth 网关后，把下面的地址改为你的网关地址（末尾不带 /auth）
-  base_url: https://decap-oauth.YOUR-SUBDOMAIN.workers.dev
+  # OAuth 网关（Cloudflare Worker）
+  base_url: https://call.0520.eu.org
 
 site_url: https://xfm0797.github.io/hexo-theme-lovou/
 

@@ -135,14 +135,14 @@ CMS 通过 GitHub API 读写仓库，需要一个 OAuth 授权网关（仓库已
 
 1. **创建 GitHub OAuth App**（Settings → Developer settings → OAuth Apps → New）
    - Homepage URL：`https://xfm0797.github.io/hexo-theme-lovou/`
-   - Callback URL：`https://<Worker域名>/callback`（第 2 步部署后得到）
+   - Callback URL：`https://call.0520.eu.org/callback`
 2. **部署 Worker** 并设置密钥：
    ```bash
    npx wrangler deploy oauth-gateway/worker.js --name decap-oauth
    npx wrangler secret put OAUTH_CLIENT_ID
    npx wrangler secret put OAUTH_CLIENT_SECRET
    ```
-3. **回填地址**：把 Worker 地址填入 `source/admin/config.yml` 的 `backend.base_url`
+3. **回填地址**：把 Worker 地址填入 `source/admin/config.yml` 的 `backend.base_url`（已配置为 `https://call.0520.eu.org`）
 
 之后打开 `/admin/`，用 GitHub 账号登录即可在线写作：
 

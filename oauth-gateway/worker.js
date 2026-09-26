@@ -70,6 +70,32 @@ export default {
       });
     }
 
+    // 根路径状态页：仅用于确认网关已正确部署
+    if (url.pathname === '/' || url.pathname === '') {
+      const html = `<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="UTF-8">
+<title>Decap/Sveltia CMS OAuth 网关</title>
+<style>
+  body{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+    display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;
+    background:#f6f7f9;color:#1f2328}
+  .card{background:#fff;border:1px solid #e8eaee;border-radius:12px;padding:2.5rem 3rem;
+    text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+  h1{font-size:1.2rem;margin:0 0 .5rem}
+  p{color:#6b7280;font-size:.9rem;margin:.3rem 0}
+  code{background:#f6f8fa;padding:.1em .4em;border-radius:5px;font-size:.85em}
+  .ok{color:#16a34a}
+</style></head>
+<body><div class="card">
+  <h1><span class="ok">●</span> OAuth 网关运行中</h1>
+  <p>此地址仅供 CMS 授权使用，请勿直接访问。</p>
+  <p>将 <code>你的Worker地址</code> 填入 <code>source/admin/config.yml</code> 的 <code>backend.base_url</code> 即可。</p>
+</div></body></html>`;
+      return new Response(html, {
+        headers: { 'Content-Type': 'text/html; charset=utf-8' },
+      });
+    }
+
     return new Response('Not Found', { status: 404 });
   },
 };
