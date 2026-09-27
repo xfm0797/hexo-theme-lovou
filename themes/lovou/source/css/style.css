@@ -949,9 +949,7 @@ figure.highlight figcaption {
 
 /* ---------- 分享 ---------- */
 .post-share {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
+  margin-bottom: 1.2rem;
 }
 
 .share-label {
