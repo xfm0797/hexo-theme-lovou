@@ -23,7 +23,7 @@ share: true
 
 # Open Graph 默认分享图（文章无图时使用；建议 1200x630，放在 source/images/ 下）
 og:
-  image: ''
+  image: /images/og-default.png
 
 # 是否显示字数与阅读时长
 word_count: true

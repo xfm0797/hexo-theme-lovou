@@ -18,6 +18,9 @@
 - 宽屏文章页右侧悬浮目录（TOC，sticky 跟随滚动，可折叠）
 - 字数统计与阅读时长（中英混合计数）
 - 归档按年分组（年份吸顶）、分类页、标签云、上下篇导航、分页
+- 卡片式友链页面
+- Open Graph / Twitter Cards 协议支持，社交平台分享显示图文卡片
+- 文末分享按钮：微信（二维码）/ 微博 / X / Telegram / 复制链接
 - 评论区接入：Giscus / Waline / Gitalk / Disqus（四选一，按需启用）
 - Sveltia CMS 在线管理：浏览器中写文章、传图片，保存即自动发布
 
@@ -55,7 +58,7 @@ comments: true     # 可选，false 关闭本文评论
 
 ```
 ├── _config.yml              # 站点配置（标题、URL、高亮、部署路径等）
-├── package.json             # 依赖与脚本（v1.1.0）
+├── package.json             # 依赖与脚本（v1.2.0）
 ├── scaffolds/               # 新文章模板
 ├── source/
 │   ├── _posts/              # 文章
@@ -82,6 +85,8 @@ comments: true     # 可选，false 关闭本文评论
 | `menu` | 导航菜单（名称 + 链接） |
 | `toc` | 文章页是否显示目录（宽屏展示在右侧；单篇可写 `toc: false`） |
 | `word_count` | 是否显示字数与阅读时长 |
+| `share` | 文末分享按钮（文章默认开启，单篇 `share: false` 关闭） |
+| `og.image` | 默认分享图（文章无图时用于 OG 卡片，已内置 `/images/og-default.png`） |
 | `comments` | 评论系统：`enable: true` 后四选一 `type`，填写对应平台配置 |
 | `license` | 文章底部版权声明（留空隐藏） |
 | `footer` | 页脚附加文字，如 ICP 备案号（留空隐藏） |
