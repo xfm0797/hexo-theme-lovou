@@ -141,6 +141,20 @@ comments:
 
 > 子路径部署需在 `_config.yml` 加 `root: /<仓库名>/`（本仓库已配置）。绑定自定义域名时，`url` 改为对应域名并删除 `root` 行。
 
+### Cloudflare Pages
+
+主题已内置 CF Pages 自适应脚本（`themes/lovou/scripts/cloudflare-pages.js`），无需修改任何配置即可直接部署：
+
+1. Cloudflare Dashboard → Workers & Pages → Create → Pages → **连接 GitHub 仓库**
+2. 构建配置：
+   - Framework preset：`None`（Hexo 不是预设框架，自定义即可）
+   - Build command：`npx hexo generate`
+   - Build output directory：`public`
+   - 环境变量 `NODE_VERSION` = `20`（Settings → Environment variables 中添加）
+3. 部署即可。**路径问题自动处理**：CF Pages 构建环境（`CF_PAGES` 变量）下自动把 `root` 切为 `/`、`url` 切为实际域名，与 GitHub Pages 的子路径部署互不干扰
+
+> 注意：`npx hexo generate` 会抓取友链 OG 信息（含网络请求），CF Pages 免费套餐构建时长完全够用；若某友链站点被 CF 网络屏蔽，会自动跳过不影响构建。
+
 ### 其他方式
 
 `npm run build` 后将 `public/` 目录部署到任意静态托管（Vercel、Netlify、服务器等）。
