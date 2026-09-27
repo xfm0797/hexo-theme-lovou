@@ -5,7 +5,7 @@ tags:
 - 内容管理
 - 产品展示
 - 企业官网
-categories: 作者开源
+categories: 开源
 ---
 
 # XFM CMS - 产品展示型小微企业官方网站

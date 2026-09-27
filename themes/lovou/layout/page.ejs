@@ -1,4 +1,26 @@
-<% if (page.type === 'categories') { %>
+<% if (page.type === 'links') { %>
+  <div class="links-page">
+    <h1 class="page-title"><%= page.title || '友情链接' %></h1>
+    <div class="post-content links-intro">
+      <%- page.content %>
+    </div>
+    <% if (page.links && page.links.length) { %>
+    <div class="links-grid">
+      <% for (const friend of page.links) { %>
+        <a class="link-card" href="<%= friend.link %>" target="_blank" rel="noopener">
+          <img class="link-avatar" src="<%= friend.avatar %>" alt="<%= friend.name %>" loading="lazy" onerror="this.style.display='none'">
+          <div class="link-info">
+            <span class="link-name"><%= friend.name %></span>
+            <% if (friend.desc) { %>
+            <span class="link-desc"><%= friend.desc %></span>
+            <% } %>
+          </div>
+        </a>
+      <% } %>
+    </div>
+    <% } %>
+  </div>
+<% } else if (page.type === 'categories') { %>
   <div class="taxonomy">
     <h1 class="page-title"><%= page.title || __('page.categories') %></h1>
     <% if (site.categories.length) { %>
@@ -39,5 +61,6 @@
       <%- page.content %>
     </div>
   </article>
+  <%- partial('partial/share') %>
   <%- partial('partial/comments') %>
 <% } %>

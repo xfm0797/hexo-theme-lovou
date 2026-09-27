@@ -12,9 +12,18 @@ menu:
     link: /tags
   - name: 关于
     link: /about
+  - name: 友链
+    link: /links
 
 # 文章页是否显示目录（单篇文章可在 front-matter 中写 toc: false 关闭）
 toc: true
+
+# 文末分享按钮（文章默认开启，单篇可写 share: false 关闭；页面需写 share: true 开启）
+share: true
+
+# Open Graph 默认分享图（文章无图时使用；建议 1200x630，放在 source/images/ 下）
+og:
+  image: ''
 
 # 是否显示字数与阅读时长
 word_count: true

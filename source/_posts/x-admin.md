@@ -1,7 +1,7 @@
 ---
 title: x-admin 基于 PHP + SQLite3 的轻量级动静分离内容管理系统
 date: 2026-09-26 20:57:59
-categories: 作者开源
+categories: 开源
 tags: 
 - 内容管理
 - 动静分离

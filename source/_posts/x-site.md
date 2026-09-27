@@ -1,7 +1,7 @@
 ---
 title: x-site 跨平台静态博客桌面客户端
 date: 2026-09-26 20:01:26
-categories: 作者开源
+categories: 开源
 tags: 
 - 桌面客户端
 - 跨平台
