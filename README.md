@@ -18,7 +18,7 @@
 - 宽屏文章页右侧悬浮目录（TOC，sticky 跟随滚动，可折叠）
 - 字数统计与阅读时长（中英混合计数）
 - 归档按年分组（年份吸顶）、分类页、标签云、上下篇导航、分页
-- 卡片式友链页面
+- 卡片式友链页面（构建时自动抓取友链站点的 OG 信息，只需填 `link` 即可自动补全名称/简介/图标）
 - Open Graph / Twitter Cards 协议支持，社交平台分享显示图文卡片
 - 文末分享按钮：微信（二维码）/ 微博 / X / Telegram / 复制链接
 - 评论区接入：Giscus / Waline / Gitalk / Disqus（四选一，按需启用）
@@ -40,7 +40,24 @@ npm run build
 npm run new "我的第一篇文章"
 ```
 
-文章位于 `source/_posts/`，front-matter 支持 `title / date / categories / tags / toc / excerpt / comments`：
+文章位于 `source/_posts/`，front-matter 支持 `title / date / categories / tags / toc / excerpt / comments`。
+
+## 友链页面
+
+编辑 `source/links/index.md` 添加友链。**构建时会自动抓取友链站点的 Open Graph 信息**（名称、简介、图标），因此最简只需填一行链接：
+
+```yaml
+links:
+  - link: https://hexo.io/zh-cn/      # 自动补全名称/简介/图标
+  - link: https://example.com         # 也可手动指定覆盖自动结果
+    name: 站点名称
+    desc: 一句话简介
+    avatar: https://example.com/avatar.png
+```
+
+- 手动填写的字段优先，不会被自动提取覆盖
+- 提取来源：`og:site_name` / `<title>` → 名称，`og:description` / `<meta description>` → 简介，站点 icon → 头像（相对地址自动转绝对）
+- 抓取结果缓存 7 天（`.links-og-cache.json`，已 gitignore）；站点无法访问时保留已有信息，构建不会失败
 
 ```yaml
 ---
