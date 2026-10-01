@@ -127,9 +127,11 @@ comments:
 - 自定义页面需在 front-matter 写 `comments: true` 开启
 - Waline 已联动站点的明暗主题切换
 
-## 部署
+## 部署（三平台同时支持）
 
-### GitHub Pages 自动部署（推荐）
+`_config.yml` 默认按**根路径**部署（`root: /`，`url: https://lovou.pw`），EdgeOne Pages、Cloudflare Pages 及自定义域名开箱即用；GitHub Pages 的项目子路径由 workflow 通过 `_config.github.yml` 自动覆盖，三个平台互不干扰，**同一份代码同时部署**。
+
+### GitHub Pages（自动部署）
 
 仓库内置 `.github/workflows/deploy.yml`，推送到 `main` 分支即自动构建部署，也支持手动触发。
 
@@ -139,11 +141,23 @@ comments:
 2. 推送代码（或手动触发 workflow），等待 Actions 完成
 3. 访问 `https://<用户名>.github.io/<仓库名>/`
 
-> 子路径部署需在 `_config.yml` 加 `root: /<仓库名>/`（本仓库已配置）。绑定自定义域名时，`url` 改为对应域名并删除 `root` 行。
+> 子路径（`root: /<仓库名>/`）由 workflow 构建时合并 `_config.github.yml` 自动处理，本地和其他平台构建不受影响。绑定自定义域名到 GitHub Pages 时，把 `_config.github.yml` 里的 `url` / `root` 改成对应域名和 `/` 即可。
+
+### EdgeOne Pages
+
+1. [EdgeOne Pages 控制台](https://console.cloud.tencent.com/edgeone/pages) → 创建项目 → **导入 GitHub 仓库**
+2. 构建部署配置：
+   - 框架预设：`其他`（Hexo 手动配置）
+   - 根目录：`./`
+   - 安装命令：`npm install`
+   - 构建命令：`npx hexo generate`
+   - 输出目录：`public`
+   - Node.js 版本：`20`（仓库根目录已带 `.nvmrc`，会自动识别）
+3. 部署后绑定自定义域名（环境管理 → 域名，CNAME 指向平台分配地址，HTTPS 证书自动签发）
+
+> 根路径部署，无需任何额外配置。若构建机出现磁盘（ENOSPC）报错，可在本地 `npm run build` 后用 `npx edgeone pages deploy public` 直接上传产物。
 
 ### Cloudflare Pages
-
-主题已内置 CF Pages 自适应脚本（`themes/lovou/scripts/cloudflare-pages.js`），无需修改任何配置即可直接部署：
 
 1. Cloudflare Dashboard → Workers & Pages → Create → Pages → **连接 GitHub 仓库**
 2. 构建配置：
@@ -151,13 +165,23 @@ comments:
    - Build command：`npx hexo generate`
    - Build output directory：`public`
    - 环境变量 `NODE_VERSION` = `20`（Settings → Environment variables 中添加）
-3. 部署即可。**路径问题自动处理**：CF Pages 构建环境（`CF_PAGES` 变量）下自动把 `root` 切为 `/`、`url` 切为实际域名，与 GitHub Pages 的子路径部署互不干扰
+3. 部署即可。根路径部署与 `_config.yml` 默认配置一致；`*.pages.dev` 默认域名下主题脚本（`themes/lovou/scripts/deploy-platforms.js`）会自动校正 `og:url` 等绝对地址
 
-> 注意：`npx hexo generate` 会抓取友链 OG 信息（含网络请求），CF Pages 免费套餐构建时长完全够用；若某友链站点被 CF 网络屏蔽，会自动跳过不影响构建。
+### 路径适配原理
+
+| 平台 | root | url | 处理方式 |
+| ---- | ---- | ---- | ---- |
+| EdgeOne Pages | `/` | 自定义域名 | 默认配置，零配置开箱即用 |
+| Cloudflare Pages | `/` | `*.pages.dev` | 默认配置 + 平台变量自动校正 |
+| GitHub Pages | `/hexo-theme-lovou/` | `*.github.io` | workflow 合并 `_config.github.yml` |
+
+任意平台还可用环境变量 `HEXO_ROOT` / `HEXO_URL` 手动覆盖（优先级最高）。
 
 ### 其他方式
 
 `npm run build` 后将 `public/` 目录部署到任意静态托管（Vercel、Netlify、服务器等）。
+
+> 注意：构建会抓取友链 OG 信息（含网络请求），各平台免费额度完全够用；若某友链站点被构建环境网络屏蔽，会自动跳过不影响构建。
 
 ## 在线管理（Sveltia CMS）
 

@@ -41,9 +41,11 @@ jobs:
         run: npm ci
 
       - name: Build with Hexo
+        # 通过 _config.github.yml 覆盖 url/root 为 GitHub Pages 子路径；
+        # 本地 / EdgeOne Pages / Cloudflare Pages 使用根路径默认配置，互不干扰
         run: |
-          npx hexo clean
-          npx hexo generate
+          npx hexo clean --config _config.yml,_config.github.yml
+          npx hexo generate --config _config.yml,_config.github.yml
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

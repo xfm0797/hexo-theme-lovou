@@ -6,3 +6,4 @@ db.json
 .DS_Store
 themes/ink/
 .links-og-cache.json
+_multiconfig.yml

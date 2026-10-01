@@ -1,0 +1,8 @@
+# GitHub Pages 专用覆盖配置
+# 仅在 GitHub Actions 部署时通过多配置合并加载：
+#   npx hexo generate --config _config.yml,_config.github.yml
+# 作用：把默认的根路径部署改为 GitHub Pages 项目子路径
+# 本地预览和 EdgeOne / Cloudflare Pages 部署不受此文件影响
+
+url: https://xfm0797.github.io/hexo-theme-lovou
+root: /hexo-theme-lovou/

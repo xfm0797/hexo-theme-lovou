@@ -10,9 +10,11 @@ language: zh-CN
 timezone: Asia/Shanghai
 
 # URL
-# GitHub Pages 部署地址（绑定自定义域名时改回 https://lovou.pw 并删除 root 行）
-url: https://xfm0797.github.io/hexo-theme-lovou
-root: /hexo-theme-lovou/
+# 默认按根路径部署（EdgeOne Pages / Cloudflare Pages / 自定义域名 lovou.pw 均为根路径）
+# GitHub Pages 的项目子路径由 .github/workflows/deploy.yml 自动通过
+# _config.github.yml 覆盖，本地构建无需修改
+url: https://lovou.pw
+root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
