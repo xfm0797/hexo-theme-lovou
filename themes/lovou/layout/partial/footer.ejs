@@ -1,14 +1,24 @@
 <footer class="footer">
-  <div class="container">
-    <p class="footer-copyright">
-      © <%= new Date().getFullYear() %> <%= config.author || config.title %>
-      <% if (theme.footer) { %>
-      <span class="footer-extra"><%- theme.footer %></span>
-      <% } %>
-    </p>
-    <p class="footer-powered">
-      由 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> 驱动
-      · <span class="footer-theme"><a href="https://github.com/xfm0797" target="_blank" rel="noopener">lovou</a> 主题</span>
-    </p>
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <p class="footer-copyright">
+        © <%= new Date().getFullYear() %> <%= config.author || config.title %>
+        <% if (theme.footer) { %>
+        <span class="footer-extra"><%- theme.footer %></span>
+        <% } %>
+      </p>
+      <p class="footer-powered">
+        由 <a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo</a> 驱动
+        · <span class="footer-theme"><a href="https://github.com/xfm0797" target="_blank" rel="noopener">lovou</a> 主题</span>
+      </p>
+    </div>
+    <% if (theme.footer_links && theme.footer_links.length) { %>
+    <nav class="footer-links" aria-label="我的网站">
+      <span class="footer-links-label">我的网站</span>
+      <% theme.footer_links.forEach(function (item) { %>
+      <a href="<%= item.link %>" target="_blank" rel="noopener"><%= item.name %></a>
+      <% }) %>
+    </nav>
+    <% } %>
   </div>
 </footer>
