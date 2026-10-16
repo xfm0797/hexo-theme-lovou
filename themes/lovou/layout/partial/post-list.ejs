@@ -1,5 +1,12 @@
 <div class="post-list">
+  <%
+    const adsense = theme.adsense || {};
+    const every = parseInt(adsense.index_every, 10) || 0;
+    const showListAd = adsense.enable && adsense.client && adsense.index_slot && every > 0;
+    let postIndex = 0;
+  %>
   <% page.posts.each(function (post) { %>
+    <% postIndex += 1; %>
     <article class="post-item">
       <h2 class="post-item-title">
         <a href="<%- url_for(post.path) %>"><%= post.title %></a>
@@ -21,5 +28,8 @@
       <p class="post-item-excerpt"><%= isAuto ? trim_excerpt(excerpt) : trim_excerpt(excerpt, 200) %></p>
       <a class="post-item-more" href="<%- url_for(post.path) %>">阅读全文 →</a>
     </article>
+    <% if (showListAd && postIndex % every === 0) { %>
+    <%- partial('partial/adsense', { slot: adsense.index_slot, label: '列表广告', className: 'adsense-list' }) %>
+    <% } %>
   <% }); %>
 </div>

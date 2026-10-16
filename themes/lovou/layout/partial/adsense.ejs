@@ -1,0 +1,25 @@
+<%
+  /* Google AdSense 广告单元
+   * 由 partial 传入的参数：
+   *   slot      必填，广告单元 ID（data-ad-slot），留空则整块不渲染
+   *   label     可选，无障碍标识，默认「广告」
+   *   className 可选，附加到容器上的类名
+   * 需主题配置 adsense.enable 为 true 且 adsense.client 已填写。
+   * 调用示例见 layout/post.ejs 与 layout/partial/post-list.ejs。
+   */
+  const adsense = theme.adsense || {};
+  const slotId = (locals && locals.slot) || '';
+  const opts = locals || {};
+  const showAd = adsense.enable && adsense.client && slotId;
+%>
+<% if (showAd) { %>
+<div class="adsense-slot<%= opts.className ? ' ' + opts.className : '' %>" aria-label="<%= opts.label || '广告' %>">
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="<%= adsense.client %>"
+       data-ad-slot="<%= slotId %>"
+       data-ad-format="<%= adsense.format || 'auto' %>"
+       data-full-width-responsive="<%= adsense.full_width_responsive === false ? 'false' : 'true' %>"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<% } %>

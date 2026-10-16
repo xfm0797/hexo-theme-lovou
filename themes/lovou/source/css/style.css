@@ -1041,3 +1041,29 @@ figure.highlight figcaption {
 .share-btn svg {
   flex-shrink: 0;
 }
+
+/* Google AdSense 广告位 */
+.adsense-slot {
+  margin: 1.8rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.adsense-slot ins.adsbygoogle {
+  display: block;
+  margin: 0 auto;
+}
+
+.adsense-post-top {
+  margin-top: 0.5rem;
+}
+
+.adsense-post-bottom {
+  margin-top: 2.2rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.adsense-list {
+  margin: 0.4rem 0 1.6rem;
+}

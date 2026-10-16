@@ -24,9 +24,13 @@
       </div>
     </header>
 
+    <%- partial('partial/adsense', { slot: theme.adsense && theme.adsense.post_top_slot, label: '文章顶部广告', className: 'adsense-post-top' }) %>
+
     <div class="post-content">
       <%- page.content %>
     </div>
+
+    <%- partial('partial/adsense', { slot: theme.adsense && theme.adsense.post_bottom_slot, label: '文章底部广告', className: 'adsense-post-bottom' }) %>
 
     <footer class="post-footer">
       <%- partial('partial/share') %>

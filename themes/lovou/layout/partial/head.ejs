@@ -84,4 +84,8 @@
     }
   })();
 </script>
+<% if (theme.adsense && theme.adsense.enable && theme.adsense.client) { %>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<%= theme.adsense.client %>" crossorigin="anonymous"></script>
+<% } %>
 </head>

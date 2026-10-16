@@ -79,3 +79,29 @@ comments:
   # Disqus https://disqus.com
   disqus:
     shortname:
+
+# Google AdSense 广告
+# 填写 client（发布商 ID）并开启 enable 后，主题会自动完成三件事：
+#   1. 在页面 <head> 注入 AdSense 脚本（全站统一加载一次）
+#   2. 按下面的 slot 在首页文章列表、文章正文顶部/底部渲染广告单元
+#   3. 生成 /ads.txt（Google 建议的站点授权声明）
+# 各广告位的 slot 留空则该位置不渲染，方便逐个上线、随时回退。
+adsense:
+  # 总开关：需同时满足 enable 为 true 且 client 已填写才会生效
+  enable: false
+  # 发布商 ID，形如 ca-pub-1234567890123456（AdSense 后台「账号」页可查）
+  client: ''
+  # 是否自动生成 /ads.txt
+  ads_txt: true
+  # 首页文章列表：每隔 N 篇插入一个广告（0 = 不插入）
+  index_every: 0
+  # 首页列表广告单元 ID（对应 AdSense 广告单元代码里的 data-ad-slot）
+  index_slot: ''
+  # 文章页正文顶部广告单元 ID
+  post_top_slot: ''
+  # 文章页正文底部广告单元 ID（正文之后、标签之前）
+  post_bottom_slot: ''
+  # 广告单元默认格式：auto / horizontal / rectangle / vertical
+  format: auto
+  # 是否为自适应全宽
+  full_width_responsive: true
