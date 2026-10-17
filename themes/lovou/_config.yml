@@ -88,9 +88,9 @@ comments:
 # 各广告位的 slot 留空则该位置不渲染，方便逐个上线、随时回退。
 adsense:
   # 总开关：需同时满足 enable 为 true 且 client 已填写才会生效
-  enable: true
+  enable: false
   # 发布商 ID，形如 ca-pub-1234567890123456（AdSense 后台「账号」页可查）
-  client: ca-pub-5873637283335964
+  client: ''
   # 是否自动生成 /ads.txt
   ads_txt: true
   # 首页文章列表：每隔 N 篇插入一个广告（0 = 不插入）
