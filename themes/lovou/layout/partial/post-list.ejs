@@ -2,7 +2,7 @@
   <%
     const adsense = theme.adsense || {};
     const every = parseInt(adsense.index_every, 10) || 0;
-    const showListAd = adsense.enable && adsense.client && adsense.index_slot && every > 0;
+    const showListAd = adsense.enable && adsense.client && adsense.index_slot && every > 0 && !adsense.auto;
     let postIndex = 0;
   %>
   <% page.posts.each(function (post) { %>

@@ -7,3 +7,6 @@ db.json
 themes/ink/
 .links-og-cache.json
 _multiconfig.yml
+
+# WorkBuddy 本地工作数据
+.workbuddy/

@@ -1,5 +1,5 @@
 <%
-  /* Google AdSense 广告单元
+  /* Google AdSense 广告单元（仅手动模式，auto: true 时不渲染）
    * 由 partial 传入的参数：
    *   slot      必填，广告单元 ID（data-ad-slot），留空则整块不渲染
    *   label     可选，无障碍标识，默认「广告」
@@ -10,7 +10,7 @@
   const adsense = theme.adsense || {};
   const slotId = (locals && locals.slot) || '';
   const opts = locals || {};
-  const showAd = adsense.enable && adsense.client && slotId;
+  const showAd = adsense.enable && adsense.client && slotId && !adsense.auto;
 %>
 <% if (showAd) { %>
 <div class="adsense-slot<%= opts.className ? ' ' + opts.className : '' %>" aria-label="<%= opts.label || '广告' %>">

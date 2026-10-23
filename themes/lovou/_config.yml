@@ -81,18 +81,23 @@ comments:
     shortname:
 
 # Google AdSense 广告
-# 填写 client（发布商 ID）并开启 enable 后，主题会自动完成三件事：
+# 填写 client（发布商 ID）并开启 enable 后，主题会自动完成两件事：
 #   1. 在页面 <head> 注入 AdSense 脚本（全站统一加载一次）
-#   2. 按下面的 slot 在首页文章列表、文章正文顶部/底部渲染广告单元
-#   3. 生成 /ads.txt（Google 建议的站点授权声明）
-# 各广告位的 slot 留空则该位置不渲染，方便逐个上线、随时回退。
+#   2. 生成 /ads.txt（Google 建议的站点授权声明）
+# 自动广告（Auto Ads）模式：auto 为 true 时，广告的展示位置与数量
+# 完全由 Google 在 AdSense 后台控制（「广告 → 按网站」里开启自动广告），
+# 主题不再渲染任何手动广告单元，下面的 slot / index_every 均被忽略。
+# 若要改回手动模式，将 auto 设为 false 并填写各广告单元 slot。
 adsense:
   # 总开关：需同时满足 enable 为 true 且 client 已填写才会生效
   enable: true
+  # 自动广告模式：true = 只注入 AdSense 脚本，广告位由 Google 自动布置
+  auto: true
   # 发布商 ID，形如 ca-pub-1234567890123456（AdSense 后台「账号」页可查）
   client: ca-pub-5873637283335964
   # 是否自动生成 /ads.txt
   ads_txt: true
+  # ↓↓ 以下仅手动模式（auto: false）下生效 ↓↓
   # 首页文章列表：每隔 N 篇插入一个广告（0 = 不插入）
   index_every: 0
   # 首页列表广告单元 ID（对应 AdSense 广告单元代码里的 data-ad-slot）
