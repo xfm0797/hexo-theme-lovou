@@ -1,5 +1,5 @@
 {
-  "name": "lovou-pw-blog",
+  "name": "hexo-theme-lovou",
   "version": "1.2.0",
   "private": true,
   "description": "基于 Hexo 的极简现代风中文博客",
@@ -10,6 +10,7 @@
     "deploy": "hexo deploy",
     "new": "hexo new"
   },
+  "author": "XFM",
   "hexo": {
     "version": "6.3.0"
   },
