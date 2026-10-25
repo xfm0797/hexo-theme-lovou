@@ -70,6 +70,13 @@
 <% if (ogImage) { %>
 <meta name="twitter:image" content="<%= ogImage %>">
 <% } %>
+<!-- Favicon -->
+<link rel="icon" href="<%- url_for('favicon.ico') %>" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="<%- url_for('favicon-32x32.png') %>">
+<link rel="icon" type="image/png" sizes="16x16" href="<%- url_for('favicon-16x16.png') %>">
+<link rel="apple-touch-icon" sizes="180x180" href="<%- url_for('apple-touch-icon.png') %>">
+<link rel="manifest" href="<%- url_for('site.webmanifest') %>">
+<meta name="theme-color" content="#2563eb">
 <link rel="stylesheet" href="<%- url_for('css/style.css') %>">
 <script>
   // 初始化主题，避免闪烁（FOUC）
