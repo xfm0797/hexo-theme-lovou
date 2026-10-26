@@ -94,11 +94,13 @@ comments:
 # 若要改回手动模式，将 auto 设为 false 并填写各广告单元 slot。
 adsense:
   # 总开关：需同时满足 enable 为 true 且 client 已填写才会生效
-  enable: true
+  # 现已关闭：发布商 ID 已移除，全站不加载 AdSense 脚本、不生成 /ads.txt
+  enable: false
   # 自动广告模式：true = 只注入 AdSense 脚本，广告位由 Google 自动布置
   auto: true
   # 发布商 ID，形如 ca-pub-1234567890123456（AdSense 后台「账号」页可查）
-  client: ca-pub-5873637283335964
+  # 需要重新启用广告时，把 ID 填回这里并将 enable 改为 true
+  client: ''
   # 是否自动生成 /ads.txt
   ads_txt: true
   # ↓↓ 以下仅手动模式（auto: false）下生效 ↓↓
