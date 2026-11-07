@@ -7,7 +7,7 @@ date: 2026-10-03 13:00:41
 excerpt: '> 桌面端 Hexo 多站点管理工具 —— 用图形界面管理多个 Hexo 站点，从写作到上线一条链路完成。 [![Tauri](https://img.shields.io/badge/Tauri-2.x-24C8DB?logo=tauri)](https://tauri.app) [![React](https://…'
 sticky: false
 tags:
-- hexo
+- Hexo
 - hexomanager
 title: HexoManager 桌面端 Hexo 多站点管理工具
 updated: 2026-10-03 13:06:05
