@@ -47,4 +47,50 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
+
+  /* 导航下拉菜单：悬停由 CSS 负责，触摸设备用点击切换 */
+  var dropdowns = document.querySelectorAll('.nav-item.has-dropdown');
+
+  Array.prototype.forEach.call(dropdowns, function (item) {
+    var trigger = item.querySelector('.nav-dropdown-trigger');
+    if (!trigger) return;
+
+    var setOpen = function (open) {
+      item.classList.toggle('is-open', open);
+      trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+
+    // 悬停时同步 aria 状态（视觉展开由 CSS :hover 完成）
+    item.addEventListener('mouseenter', function () {
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+    item.addEventListener('mouseleave', function () {
+      if (!item.classList.contains('is-open')) {
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    var canHover = function () {
+      return window.matchMedia && window.matchMedia('(hover: hover)').matches;
+    };
+
+    trigger.addEventListener('click', function (e) {
+      // 有悬停能力时点击直接跳转；触摸设备第一次点击先展开菜单
+      if (!canHover() && !item.classList.contains('is-open')) {
+        e.preventDefault();
+        setOpen(true);
+      }
+    });
+
+    item.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        setOpen(false);
+        trigger.focus();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!item.contains(e.target)) setOpen(false);
+    });
+  });
 })();

@@ -3,7 +3,21 @@
     <a class="site-title" href="<%- url_for('/') %>"><%= config.title %></a>
     <nav class="nav" aria-label="主导航">
       <% for (const item of theme.menu) { %>
-        <a class="nav-link" href="<%- url_for(item.link) %>"><%= item.name %></a>
+        <% if (item.children && item.children.length) { %>
+          <div class="nav-item has-dropdown">
+            <a class="nav-link nav-dropdown-trigger" href="<%- url_for(item.link) %>" aria-haspopup="true" aria-expanded="false">
+              <%= item.name %>
+              <svg class="nav-caret" viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </a>
+            <div class="nav-dropdown" role="menu">
+              <% for (const child of item.children) { %>
+                <a class="nav-dropdown-link" role="menuitem" href="<%- url_for(child.link) %>"<% if (child.new_tab) { %> target="_blank" rel="noopener"<% } %>><%= child.name %></a>
+              <% } %>
+            </div>
+          </div>
+        <% } else { %>
+          <a class="nav-link" href="<%- url_for(item.link) %>"><%= item.name %></a>
+        <% } %>
       <% } %>
       <button id="theme-toggle" class="theme-toggle" aria-label="切换明暗主题" title="切换主题">
         <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>

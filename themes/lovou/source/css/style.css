@@ -137,6 +137,86 @@ img {
   opacity: 1;
 }
 
+/* ---------- 导航下拉菜单 ---------- */
+.nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.18rem;
+}
+
+.nav-caret {
+  flex: none;
+  transition: transform var(--transition);
+}
+
+.nav-item.has-dropdown:hover .nav-caret,
+.nav-item.has-dropdown:focus-within .nav-caret,
+.nav-item.has-dropdown.is-open .nav-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 7.5rem;
+  padding: 0.35rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -4px);
+  transition: opacity var(--transition), transform var(--transition),
+    visibility var(--transition);
+}
+
+/* 触发器与菜单之间的空隙用伪元素桥接，鼠标移过去不会闪断 */
+.nav-dropdown::before {
+  content: '';
+  position: absolute;
+  top: -0.45rem;
+  left: 0;
+  right: 0;
+  height: 0.45rem;
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown,
+.nav-item.has-dropdown.is-open .nav-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.nav-dropdown-link {
+  display: block;
+  padding: 0.4rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: color var(--transition), background var(--transition);
+}
+
+.nav-dropdown-link:hover {
+  color: var(--text);
+  background: var(--bg-soft);
+  opacity: 1;
+}
+
 .theme-toggle {
   display: inline-flex;
   align-items: center;
@@ -838,6 +918,19 @@ figure.highlight figcaption {
   .nav-link {
     font-size: 0.85rem;
     padding: 0.3rem 0.4rem;
+  }
+
+  /* 窄屏下下拉菜单改为右对齐，避免撑出屏幕 */
+  .nav-dropdown {
+    left: auto;
+    right: 0;
+    transform: translateY(-4px);
+  }
+
+  .nav-item.has-dropdown:hover .nav-dropdown,
+  .nav-item.has-dropdown:focus-within .nav-dropdown,
+  .nav-item.has-dropdown.is-open .nav-dropdown {
+    transform: translateY(0);
   }
 
   .site-title {

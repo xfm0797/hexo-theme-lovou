@@ -10,8 +10,19 @@ menu:
     link: /categories
   - name: 标签
     link: /tags
-  - name: 关于
+  # 带 children 的项会渲染成下拉菜单（鼠标悬停 / 点击展开）
+  # 设 new_tab: true 可让子项在新标签页打开
+  - name: 我的
     link: /about
+    children:
+      - name: 工具
+        link: https://tools.lovou.pw
+        new_tab: true
+      - name: Whois
+        link: https://whois.xfm.qzz.io
+        new_tab: true
+      - name: 关于
+        link: /about
   - name: 友链
     link: /links
 
