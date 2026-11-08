@@ -18,6 +18,9 @@ menu:
       - name: 工具
         link: https://tools.lovou.pw
         new_tab: true
+      - name: 文档
+        link: https://doc.lovou.pw
+        new_tab: true
       - name: Whois
         link: https://whois.xfm.qzz.io
         new_tab: true
